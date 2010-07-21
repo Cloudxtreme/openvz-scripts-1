@@ -1,0 +1,23 @@
+1) Look into adding support for perhaps chrooting into the template and adding some specifyed packages....
+    - Add in the config for updating/setting the correct time-zone for the template
+
+2) Look into cleaning up the vz emerge script
+
+3) look into perhaps instead of chroot in #1 have a post deployment script that emerge/merges new packages into the system
+
+4) Update the vzemerge script to double/triple check that XYZ portage directory is arleady there, setup the make.profile properly/etc...
+
+
+
+
+1) extend the stage3 -> openvz image script to do
+    a) open a file w/ a list of package to be installed
+        b) load a directory w/ a list of config/files
+
+	2) Can make it extend git so when git is pushed to, git will run a script to update each machines as needed
+	3) profit
+
+
+	4) Just create some "machine-package" then "machine-specific-package" which are "meta ebuilds" for what you want
+	on each machine, then have a "machine-specific-package" for like generic setup like dns, web-server, etc
+
