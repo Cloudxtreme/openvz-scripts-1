@@ -24,3 +24,38 @@ update each machines as needed
 4) Just create some "machine-package" then "machine-specific-package" which are
 "meta ebuilds" for what you want on each machine, then have a
 "machine-specific-package" for like generic setup like dns, web-server, etc
+
+
+
+
+
+
+
+VZLIST class
+
+maybe define a "dataset object" that define what value/output that i am interested in such as ip, kmemsize, etc...
+then pass that to the initializer of the vzlist so that it will spit out the values that i want, etc
+
+need to do parsing and convert it into a nice hash for each ctid or something.
+
+
+
+High level design idea:
+Machine (Physical machine that the containers are on)
+    Container (Each container)
+	Various settings/options
+
+
+Provide like a low level API like vzlist, vzctl, etc for those who wants procedural interface or to put together
+their own management, but look into a high level object kind of hiechary in which you have a machine (ssh/local/etc) in
+which it manages the actual machine that the containers are on.
+
+Then have one container object for like each container, and it has various settings like create, destroy, etc... then
+you can like "create a new container" but it won't happen on the openVZ machine till you do a "commit" or something which
+bundles up all of the settings/changes and send it to the openvz machine
+
+then finally the lowest level is the various settings/option like you got network, disk, quota, etc.... putting copying files,
+     tweaking the container.
+
+
+This won't have a template generator part in it for this iteration
